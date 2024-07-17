@@ -1,0 +1,231 @@
+/* test.css */
+
+/* CSS cho phần header */
+header {
+  background-color: #f2f2f2;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-bar {
+  display: flex;
+}
+
+.status {
+  padding: 5px 10px;
+  background-color: #ccc;
+  margin-right: 5px;
+}
+
+#save-quiz-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+
+}
+
+/* CSS cho phần quiz-info */
+.quiz-info {
+  margin-bottom: 20px;
+}
+
+.quiz-info label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.quiz-info input[type="text"],
+.quiz-info input[type="datetime-local"] {
+  margin-bottom: 10px;
+}
+
+.quiz-info button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+
+}
+
+/* CSS cho phần participant-form */
+#participant-form {
+  margin-bottom: 20px;
+}
+
+#participant-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#participant-form input[type="text"] {
+  margin-bottom: 10px;
+}
+
+
+
+#add-participant {
+  background-color: #4CAF50; /* Màu nền */
+  color: white; /* Màu chữ */
+  padding: 10px 20px; /* Kích thước */
+  border: none; /* Không có viền */
+  border-radius: 5px; /* Bo góc */
+  cursor: pointer; /* Con trỏ khi rê chuột */
+  margin-bottom: 10px; /* Khoảng cách dưới cùng */
+}
+
+/* CSS cho nút "X" */
+#participant-form #delete-button  {
+  background-color: #f44336; /* Màu nền */
+  color: white; /* Màu chữ */
+  padding: 5px 5px; /* Kích thước */
+  border: none; /* Không có viền */
+  border-radius: 50%; /* Bo góc thành hình tròn */
+  cursor: pointer; /* Con trỏ khi rê chuột */
+  margin-left: 5px; /* Khoảng cách với phần tử trước đó */
+}
+
+/* CSS cho phần quiz-questions */
+#quiz-questions {
+  margin-bottom: 20px;
+}
+
+.question {
+  margin-bottom: 20px;
+}
+
+.question label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.question input[type="text"] {
+  margin-bottom: 10px;
+  width: 80%;
+  padding: 5px;
+}
+.question input[type="checkbox"] {
+  margin-bottom: 10px;
+  
+}
+
+.question button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+
+}
+
+.question .add-answer {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+
+}
+
+.question .delete-answer,
+.question .delete-question {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+
+#add-question {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+
+}
+
+/* CSS */
+#status-bar {
+  width: 100%;
+  background-color: #f3f3f3;
+  position: relative;
+  height: 20px;
+  border: 1px solid #e7e2e2;
+}
+
+#loading-bar {
+  position: absolute;
+  width: 0;
+  height: 100%;
+  background-color: dodgerblue;
+}
+
+.milestone {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background-color: #fbfbfb;
+}
+
+#milestone1 {
+  left: 33%;
+}
+
+#milestone2 {
+  left: 66%;
+}
+
+#milestone3 {
+  left: 100%;
+}
+
+#status-bar-name {
+  display: flex;
+  justify-content: space-between;
+}
+
+#status-parent {
+  width: 100%;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Manual Quiz</title>
+  <link rel="stylesheet" href="../css/create-question.css">
+</head>
+<body>
+  <h1>Create Manual Quiz</h1>
+
+  <div class="quiz-name">
+    <label for="quizName">Quiz Name:</label>
+    <input type="text" id="quiz-name" name="quizName">
+  </div>
+
+  <div class="question-container">
+    <label for="question-input">Type question here:</label>
+    <textarea id="question-input" rows="4" placeholder="Enter your question"></textarea>
+  </div>
+
+  <div class="answer-container">
+    <label for="answer1-input">
+      <input type="checkbox" name="correct-answer" value="1"> Type answer option here:
+    </label>
+    <input id="answer1-input" type="text" placeholder="Answer option 1">
+
+    <label for="answer2-input">
+      <input type="checkbox" name="correct-answer" value="2"> Type answer option here:
+    </label>
+    <input id="answer2-input" type="text" placeholder="Answer option 2">
+
+    <label for="answer3-input">
+      <input type="checkbox" name="correct-answer" value="3"> Type answer option here:
+    </label>
+    <input id="answer3-input" type="text" placeholder="Answer option 3">
+
+    <label for="answer4-input">
+      <input type="checkbox" name="correct-answer" value="4"> Type answer option here:
+    </label>
+    <input id="answer4-input" type="text" placeholder="Answer option 4">
+  </div>
+
+  <div class="time-container">
+    <label for="time-select">Select time (seconds):</label>
+    <select id="time-select">
+      <option value="10">10</option>
+      <option value="20">20</option>
+      <option value="30">30</option>
+    </select>
+  </div>
+
+  <button id="save-button">Save question</button>
+  <button id="add-question-button">Add Question</button>
+
+  <script src="../js/env.js"></script>
+  <script src="../js/create-question.js"></script>
+</body>
+</html>

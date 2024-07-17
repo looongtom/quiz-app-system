@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/pagination.css">
+</head>
+
+<body>
+
+    <nav>
+        <h2>Welcome, <span id="username">Trần Quang Minh</span></h2>
+        <a href="enter-quiz.html"><button class="button" id="join-quiz-button">Join Quiz</button></a>
+        <button class="logout-button" id="logout-button">Logout</button>
+    </nav>
+
+    <div class="container">
+        <div class="button-container">
+            <button class="button" id="btn-create-quiz">Create Quiz Normally</button>
+            <button class="button" id="btn-create-quiz-with-excel">Create Quiz with Excel</button>
+
+        </div>
+
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search for a quiz...">
+            <button id="search-button">Search</button>
+        </div>
+
+        <h2>Quiz List</h2>
+        <ul>
+            <li>
+                <span>Quiz 1</span>
+                <div class="button-group">
+                    <button class="update-button">Update</button>
+                    <button class="delete-button">Delete</button>
+                </div>
+            </li>
+            <li>
+                <span>Quiz 2</span>
+                <div class="button-group">
+                    <button class="update-button">Update</button>
+                    <button class="delete-button">Delete</button>
+                </div>
+            </li>
+            <li>
+                <span>Quiz 3</span>
+                <div class="button-group">
+                    <button class="update-button">Update</button>
+                    <button class="delete-button">Delete</button>
+                </div>
+            </li>
+        </ul>
+
+        <div class="pagination">
+            <button>&laquo;</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>&raquo;</button>
+        </div>
+    </div>
+
+</body>
+<script src="../js/env.js"></script>
+<script src="../js/pagination.js"></script>
+
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
+<script src="../js/home.js"></script>
+
+<script>
+    fetchUserInfo()
+    // Function to fetch data
+    function fetchData(pageNo, quizName) {
+        // Fetch the JSON data
+        fetch(`http://3.88.212.45:8080/api/v1/quiz/search-quiz?pageNo=${pageNo}&pageSize=10&quizName=${quizName}`)
+            .then(response => response.json())
+            .then(data => {
+                // Get the ul element
+                const ul = document.querySelector('ul');
+
+                // Clear the existing list
+                ul.innerHTML = '';
+
+                // Get pagination data
+                const totalPage = data.data.totalPage;
+
+                // Iterate over the data array
+                data.data.data.forEach(item => {
+                    // Create a new li element
+                    const li = document.createElement('li');
+
+                    // Create a span element and set its text to the quiz name
+                    const span = document.createElement('span');
+                    span.textContent = item.name;
+
+                    // Create a div for the buttons
+                    const buttonGroup = document.createElement('div');
+                    buttonGroup.className = 'button-group';
+
+                    // Create the update button
+                    const updateButton = document.createElement('button');
+                    updateButton.className = 'update-button';
+                    updateButton.textContent = 'Update';
+
+                    // Create the delete button
+                    const deleteButton = document.createElement('button');
+                    deleteButton.className = 'delete-button';
+                    deleteButton.textContent = 'Delete';
+
+                    // Append the buttons to the div
+                    buttonGroup.appendChild(updateButton);
+                    buttonGroup.appendChild(deleteButton);
+
+                    // Append the span and div to the li
+                    li.appendChild(span);
+                    li.appendChild(buttonGroup);
+
+                    // Append the li to the ul
+                    ul.appendChild(li);
+
+                    span.addEventListener('click', function () {
+                        // Create a new QRCode object
+                        const qrcode = new QRCode(document.createElement('div'), {
+                            text: item.id.toString(),
+                            width: 238,
+                            height: 238
+                        });
+
+                        // Wait for the QR code to finish drawing
+                        setTimeout(function () {
+                            // Convert the QR code to a data URL
+                            const qrDataUrl = qrcode._oDrawing._elImage.src;
+
+                            // Open the join-quiz.html page with the QR code data URL as a parameter
+                            window.location.href = `join-quiz.html?qr=${encodeURIComponent(qrDataUrl)}&idQuiz=${item.id}`;
+                        }, 1000); // Wait for 1 second
+                    });
+
+                });
+
+                // Handle pagination
+                const pagination = document.querySelector('.pagination');
+                pagination.innerHTML = '';
+
+                for (let i = 0; i < totalPage; i++) {
+                    const button = document.createElement('button');
+                    button.textContent = i + 1;
+                    button.onclick = function () {
+                        // Fetch data for this page
+                        fetchData(i, quizName);
+                    };
+                    pagination.appendChild(button);
+                }
+
+            });
+    }
+
+    // Call the function for the initial fetch
+    fetchData(0, '');
+</script>
+
+<script>
+    const searchButton = document.querySelector('#search-button');
+
+    // Add an event listener to the search button
+    searchButton.addEventListener('click', function () {
+        // Get the search input
+        const searchInput = document.querySelector('#search-input');
+
+        // Fetch the data based on the search input
+        fetchData(0, searchInput.value);
+    });
+</script>
+
+
+<!-- <script>
+
+    // Iterate over the data array
+    data.data.data.forEach(item => {
+        // Create a new li element
+        const li = document.createElement('li');
+
+        // Add an event listener to the li element
+        li.addEventListener('click', function () {
+            // Create a new QRCode object
+            const qrcode = new QRCode(document.body, {
+                text: item.id.toString(),
+                width: 128,
+                height: 128
+            });
+        });
+
+        // Rest of your code...
+    });
+
+</script> -->
+
+</html>

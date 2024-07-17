@@ -1,0 +1,92 @@
+version: '3.8'
+
+services:
+  # Database service
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=quiz_management
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=tr1nhtu@n
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - backend
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "2717:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=tom
+      - MONGO_INITDB_ROOT_PASSWORD=123456
+      - MONGO_INITDB_DATABASE=user_management
+    networks:
+      - backend
+
+  # Quiz server
+  quiz-server:
+    build:
+      context: ./backend-quiz/demo
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/quiz_management
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=tr1nhtu@n
+    env_file:
+      - .env
+    networks:
+      - backend
+
+  # Authorization quiz server
+  authorize-quiz-server:
+    build:
+      context: ./backend-quiz/authorize-quiz
+      dockerfile: Dockerfile
+    ports:
+      - 8082:8082
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/permission_quiz_management
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=tr1nhtu@n
+    networks:
+      - backend
+
+  # SSE Server
+  sse-server:
+    build:
+      context: ./backend-quiz/SSE-Server
+      dockerfile: Dockerfile
+    ports:
+      - 8083:8083
+    networks:
+      - backend
+
+  # Oath Authorize service
+  go-server:
+    build: ./oath-authorize
+    ports:
+      - 8000:8000
+    depends_on:
+      - mongo
+      - db
+      - quiz-server
+      - authorize-quiz-server
+      - sse-server
+    env_file:
+      - .env
+    networks:
+      - backend
+
+volumes:
+  db-data:
+  mongo_data:
+  postgres_data:
+
+networks:
+  backend:
+    driver: bridge

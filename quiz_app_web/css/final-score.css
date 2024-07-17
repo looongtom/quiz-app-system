@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.final-score {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.score-title {
+    text-align: center;
+}
+
+.score {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.leaderboard-title {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.leaderboard {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: dodgerblue;
+}
+
+.leaderboard th, .leaderboard td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.leaderboard th {
+    color: white;
+}
+
+.leaderboard td {
+    text-align: center;
+}
+
+.leaderboard tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.leaderboard tbody tr:hover {
+    background-color: #f0f0f0;
+}

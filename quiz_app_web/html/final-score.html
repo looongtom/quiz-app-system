@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Score</title>
+    <link rel="stylesheet" href="../css/final-score.css">
+</head>
+<body>
+    <a href="home.html">Back to Home Page</a>
+    <div class="final-score">
+        <h1 class="score-title">Your Final Score</h1>
+        <div class="score">
+            <span class="score-value" id="score-value">0</span>
+        </div>
+        <h2 class="leaderboard-title">Leaderboard</h2>
+        <table class="leaderboard">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Username</th>
+                    <th>Take Date</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody id="leaderboard-body">
+                <!-- Leaderboard items will be populated here -->
+            </tbody>
+        </table>
+    </div>
+    <script src="../js/env.js"></script>
+    <script>
+        // Pass the score to final-score.js
+        var finalScore = localStorage.getItem("finalScore");
+        document.getElementById("score-value").textContent = finalScore;
+    </script>
+    <script src="../js/final-score.js"></script>
+</body>
+</html>

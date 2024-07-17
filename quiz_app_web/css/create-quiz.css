@@ -1,0 +1,51 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.quiz-type {
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px; /* Tạo đường viền cong */
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.quiz-name {
+  margin-bottom: 20px;
+}
+
+.quiz-name label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.quiz-name input[type="text"] {
+  width: 20%;
+  padding: 5px;
+  font-size: 16px;
+}

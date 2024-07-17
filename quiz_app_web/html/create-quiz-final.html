@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Tạo bài Quiz</title>
+  <!-- <link rel="stylesheet" href="/css/create-quiz-final.css">  -->
+  <link rel="stylesheet" href="../css/create-quiz-final.css">
+
+</head>
+
+<body>
+  <a href="home.html">Back</a>
+  <header>
+    <!-- Thanh trạng thái -->
+    <!-- HTML -->
+
+    <div id="status-parent">
+      <div id="status-bar-name">
+        <div id="loading-bar-name"></div>
+        <div class="milestone-name" id="milestone1-name">Quiz service</div>
+        <div class="milestone-name" id="milestone2-name">Question service</div>
+        <div class="milestone-name" id="milestone3-name">Complete</div>
+      </div>
+
+      <div id="status-bar">
+        <div id="loading-bar"></div>
+        <div class="milestone" id="milestone1"></div>
+        <div class="milestone" id="milestone2"></div>
+        <div class="milestone" id="milestone3"></div>
+      </div>
+    </div>
+    
+    <!-- Nút Save Quiz -->
+
+    <button id="save-quiz-button">Save Quiz</button>
+  </header>
+
+  <main>
+    <section>
+      <!-- Nhập Tên Quiz và thời gian bắt đầu/kết thúc -->
+      <div class="quiz-info">
+        <label for="quiz-name">Quiz's Name:</label>
+        <input type="text" id="quiz-name">
+
+        <label for="start-time">Start</label>
+        <input type="datetime-local" id="start-time">
+
+        <label for="end-time">End</label>
+        <input type="datetime-local" id="end-time">
+
+        <label for="file-upload">Upload File:</label>
+        <input type="file" id="file-upload">
+
+        <button id="file-input">Import file Excel</button>
+
+      </div>
+
+      <!-- Form nhập tên tài khoản người tham gia -->
+      <div id="participant-form">
+        <label for="participant-name">Tên tài khoản người tham gia:</label>
+        <input type="text" id="participant-name">
+        <button id="add-participant">Thêm</button>
+      </div>
+    </section>
+
+    <section id="quiz-questions">
+
+      <!-- Phần tạo Quiz thủ công -->
+      <!-- <div class="question">
+        <label for="question-number">Question number </label>
+        <span id="question-number">1</span>
+      
+        <label for="question-text">Type question here: </label>
+        <input type="text" id="question-text">
+        <button class="delete-question">Delete answer</button>
+      
+        <label for="answer1">Type answer here</label>
+        <input type="checkbox" id="answer1-checkbox">
+        <input type="text" id="answer1">
+        <button class="delete-answer">Delete answer</button> 
+
+        
+      
+        <label for="answer2">Type answer here</label>
+        <input type="checkbox" id="answer2-checkbox">
+        <input type="text" id="answer2">
+        <button class="delete-answer">Delete answer</button>
+      
+        <label for="answer3">Type answer here:</label>
+        <input type="checkbox" id="answer3-checkbox">
+        <input type="text" id="answer3">
+        <button class="delete-answer">Delete answer</button>
+      
+        <button class="add-answer">Add answer</button> -->
+      </span>
+
+      <button id="add-question">Add question</button>
+    </section>
+
+  </main>
+  <script src="../js/env.js"></script>
+  <!-- <script src="/js/create-quiz-final.js"></> -->
+  <script src="../js/create-quiz-final.js"></script>
+  <script src="../js/create-quiz-preview.js"></script>
+
+</body>
+
+</html>

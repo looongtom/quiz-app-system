@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  # Database service
+  db:
+    image: looongtom/postgres:13
+    environment:
+      - POSTGRES_DB=quiz_management  # Or separate databases as needed (see explanation)
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=tr1nhtu@n  # Replace with a strong password (security recommendation)
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  # Quiz server (replace "demo" with the actual folder name if different)
+  quiz-server:
+    image: looongtom/backend-quiz-quiz-server
+    build:
+      context: ./demo  # Update the path if your folder name is different
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/quiz_management  # Update database name if separate
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=tr1nhtu@n  # Replace with a strong password
+
+  # Authorization quiz server (replace "authorize-quiz" with the actual folder name if different)
+  authorize-quiz-server:
+    image: looongtom/backend-quiz-authorize-quiz-server
+    build:
+      context: ./authorize-quiz  # Update the path if your folder name is different
+      dockerfile: Dockerfile
+    ports:
+      - 8082:8082
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/permission_quiz_management  # Update database name if separate
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=tr1nhtu@n  # Replace with a strong password
+
+  # SSE Server (replace "SSE-Server" with the actual folder name if different)
+  sse-server:
+    image: looongtom/backend-quiz-sse-server
+    build:
+      context: ./SSE-Server  # Update the path if your folder name is different
+      dockerfile: Dockerfile
+    ports:
+      - 8083:8083
+
+volumes:
+  db-data:

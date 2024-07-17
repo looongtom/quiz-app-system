@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="sse" />
+        <module name="demo" />
+        <module name="authorize-quiz" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="authorize-quiz" target="17" />
+      <module name="backend-score" target="17" />
+      <module name="demo" target="17" />
+      <module name="sse" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="authorize-quiz" options="-parameters" />
+      <module name="backend-score" options="-parameters" />
+      <module name="demo" options="-parameters" />
+      <module name="sse" options="-parameters" />
+    </option>
+  </component>
+</project>
